@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Safe App</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --teal: #0F6E56;
+    --teal-light: #E8F5F1;
+    --teal-mid: #9FE1CB;
+    --ink: #1A1A1A;
+    --ink-soft: #444;
+    --ink-muted: #777;
+    --border: #E8E4E0;
+    --bg: #FDFBF9;
+    --surface: #FFFFFF;
+    --section-bg: #F9F6F3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .header {
+    background: var(--teal);
+    color: white;
+    padding: 48px 0 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%; transform: translateX(-50%);
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .meta-item strong {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    margin-bottom: 1px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Summary cards */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 36px 0 28px;
+  }
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .summary-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 10px;
+  }
+  .summary-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .summary-desc {
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+  .toc-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 12px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 3px;
+  }
+  .toc a {
+    display: block;
+    font-size: 13px;
+    color: var(--teal);
+    text-decoration: none;
+    padding: 3px 0;
+    transition: opacity .15s;
+  }
+  .toc a:hover { opacity: .7; }
+
+  .notice {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: #0A3D30;
+    line-height: 1.6;
+  }
+  .notice strong { color: var(--teal); }
+
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin-bottom: 14px;
+    scroll-margin-top: 20px;
+  }
+  .section-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 6px;
+  }
+  .section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 18px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .section p {
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  .section ul, .section ol {
+    padding-left: 20px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .section li { margin-bottom: 6px; }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .data-table th {
+    background: var(--section-bg);
+    text-align: left;
+    padding: 9px 12px;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--ink-muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  .highlight {
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 14px;
+    color: var(--ink-soft);
+    border: 1px solid var(--border);
+  }
+  .highlight strong { color: var(--ink); }
+
+  .zero-knowledge {
+    background: var(--teal);
+    color: white;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .zero-knowledge strong { color: #9FE1CB; }
+
+  .rights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .right-card {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .right-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 4px;
+  }
+  .right-desc {
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .contact-block {
+    background: var(--ink);
+    color: white;
+    border-radius: 12px;
+    padding: 32px 36px;
+    margin: 32px 0 48px;
+    text-align: center;
+  }
+  .contact-block h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .contact-block p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 16px;
+  }
+  .contact-link {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    text-decoration: none;
+    padding: 10px 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 4px;
+    transition: opacity .15s;
+  }
+  .contact-link:hover { opacity: .85; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .section { padding: 22px 18px; }
+    .data-table { font-size: 12px; }
+    .data-table th, .data-table td { padding: 7px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="header-badge">Privacy Document</div>
+    <h1>Privacy Policy</h1>
+    <p class="header-sub">Safe — Your safety, always.</p>
+    <div class="header-meta">
+      <div class="meta-item"><strong>Version</strong>1.0</div>
+      <div class="meta-item"><strong>Effective Date</strong>19 July 2026</div>
+      <div class="meta-item"><strong>Last Updated</strong>19 July 2026</div>
+      <div class="meta-item"><strong>Developer</strong>Meehum SAK</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="summary-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L3 5v5c0 3.5 2.5 6 6 7 3.5-1 6-3.5 6-7V5L9 2z" stroke="#0F6E56" stroke-width="1.4" fill="none"/></svg></div>
+      <div class="summary-title">No Background Recording</div>
+      <div class="summary-desc">Mic only used when you tap Record with app open.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#0F6E56" stroke-width="1.4"/><path d="M6 9l2 2 4-4" stroke="#0F6E56" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="summary-title">No Data Selling</div>
+      <div class="summary-desc">Your data is never sold to anyone.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="6" width="12" height="8" rx="2" stroke="#0F6E56" stroke-width="1.4" fill="none"/><path d="M6 6V5a3 3 0 016 0v1" stroke="#0F6E56" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="summary-title">Your Control</div>
+      <div class="summary-desc">Delete all your data anytime, instantly.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="#0F6E56" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="summary-title">No Tracking</div>
+      <div class="summary-desc">We don't track you for ads or analytics.</div>
+    </div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <a href="#p1">1. Who We Are</a>
+      <a href="#p2">2. What Data We Collect</a>
+      <a href="#p3">3. How We Use Your Data</a>
+      <a href="#p4">4. Recordings &amp; Zero-Knowledge</a>
+      <a href="#p5">5. Data Sharing</a>
+      <a href="#p6">6. Data Retention</a>
+      <a href="#p7">7. Your Rights</a>
+      <a href="#p8">8. Children's Privacy</a>
+      <a href="#p9">9. International Users</a>
+      <a href="#p10">10. Security</a>
+      <a href="#p11">11. Third-Party Services</a>
+      <a href="#p12">12. Changes to Policy</a>
+      <a href="#p13">13. Contact &amp; Requests</a>
+    </div>
+  </div>
+
+  <div class="notice">
+    <strong>Plain-language summary:</strong> Safe collects only what it needs to keep you safe — your phone number, location (when you choose to share it), and recordings you create. We cannot read your recordings. We never sell your data. You can delete everything instantly at any time.
+  </div>
+
+  <div class="section" id="p1">
+    <div class="section-num">Section 01</div>
+    <h2>Who We Are</h2>
+    <p><strong>Meehum SAK</strong> ("we," "us," "our") is the developer of the Safe mobile application. We are registered in <strong>India</strong>.</p>
+    <p>This Privacy Policy explains how we collect, use, store, and protect your personal information when you use Safe. It applies to all users globally, including compliance with GDPR (European Union), India's Digital Personal Data Protection Act 2023, and applicable privacy laws in the United States, United Kingdom, Australia, and other regions.</p>
+    <p>Our dedicated privacy contact is: <strong>meehumsak.support@gmail.com</strong></p>
+  </div>
+
+  <div class="section" id="p2">
+    <div class="section-num">Section 02</div>
+    <h2>What Data We Collect</h2>
+    <p>We collect only the minimum data necessary to provide Safe's features. Here is exactly what we collect and why:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>What It Includes</th>
+          <th>Why Collected</th>
+          <th>Who Can See It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Phone number</strong></td>
+          <td>Your mobile number used for OTP verification</td>
+          <td>Account creation and identity verification</td>
+          <td>You only. We store hashed version.</td>
+        </tr>
+        <tr>
+          <td><strong>Location (GPS)</strong></td>
+          <td>Latitude, longitude, timestamp</td>
+          <td>SOS alerts, live location sharing, Guardian Mode</td>
+          <td>You and your chosen trusted contacts only</td>
+        </tr>
+        <tr>
+          <td><strong>Audio recordings</strong></td>
+          <td>Audio captured when you explicitly tap Record with app open on screen. Never background.</td>
+          <td>Evidence preservation — foreground only, user-initiated</td>
+          <td>You only — encrypted, zero-knowledge</td>
+        </tr>
+        <tr>
+          <td><strong>Trusted contacts</strong></td>
+          <td>Names and phone numbers you add</td>
+          <td>Sending SOS alerts</td>
+          <td>You only — stored encrypted</td>
+        </tr>
+        <tr>
+          <td><strong>SOS event metadata</strong></td>
+          <td>Time, date, location of SOS triggers</td>
+          <td>SOS history log</td>
+          <td>You only</td>
+        </tr>
+        <tr>
+          <td><strong>Subscription status</strong></td>
+          <td>Free/Pro, expiry date (via RevenueCat)</td>
+          <td>Determining feature access</td>
+          <td>You and our subscription service only</td>
+        </tr>
+        <tr>
+          <td><strong>App usage data</strong></td>
+          <td>Crash reports, error logs (no personal content)</td>
+          <td>App stability and bug fixing</td>
+          <td>Developer only — anonymised</td>
+        </tr>
+        <tr>
+          <td><strong>Deletion reason</strong></td>
+          <td>Reason selected when deleting account (optional)</td>
+          <td>Product improvement</td>
+          <td>Developer only — no UID attached, fully anonymous</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>What We Do NOT Collect</h3>
+    <ul>
+      <li>We do not collect your name (unless you voluntarily add it to your profile)</li>
+      <li>We do not collect contacts from your phone book unless you explicitly add them</li>
+      <li>We do not collect browsing history, other app usage, or device identifiers beyond what Firebase requires</li>
+      <li>We do not collect payment card information (handled entirely by App Store / Google Play)</li>
+      <li>We do not currently use advertising tracking or third-party analytics that profile you</li>
+    </ul>
+    <p style="margin-top:14px"><strong>Planned future feature:</strong> in a future version, Safe may include interstitial ads (e.g. via Google AdMob) to support free-tier usage. This Privacy Policy will be updated with the specific ad network and data it collects before that feature is released, and you will be notified in-app.</p>
+  </div>
+
+  <div class="section" id="p3">
+    <div class="section-num">Section 03</div>
+    <h2>How We Use Your Data</h2>
+    <p>We use your data only for the following purposes:</p>
+    <ul>
+      <li><strong>Providing the App:</strong> Operating Safe's features — SOS alerts, Guardian Mode, location sharing, emergency contacts</li>
+      <li><strong>Account management:</strong> Authentication, subscription verification, account deletion</li>
+      <li><strong>Safety features:</strong> Sending SMS alerts with your location to your trusted contacts during an SOS event</li>
+      <li><strong>App improvement:</strong> Anonymous crash reports and error logs to fix technical issues</li>
+      <li><strong>Legal compliance:</strong> Complying with applicable laws and responding to lawful legal requests (within our technical capabilities)</li>
+      <li><strong>Communications:</strong> Essential service notifications such as account confirmation, subscription updates, and security alerts. We do not send marketing emails unless you explicitly opt in.</li>
+    </ul>
+    <p>We do not use your data for advertising, profiling, or any purpose not listed above.</p>
+  </div>
+
+  <div class="section" id="p4">
+    <div class="section-num">Section 04</div>
+    <h2>Recordings — Foreground Only, Zero-Knowledge</h2>
+    <div class="zero-knowledge">
+      <strong>Safe never records audio in the background.</strong> Recording only happens when the app is open and visible on your screen and you explicitly tap the Record button. There is always a visible recording indicator on screen. We cannot access your recordings — this is not a policy, it is a technical fact.<br><br>
+      All recordings are encrypted on your device before any cloud upload. We store only the encrypted file and do not hold the decryption key. Even if legally compelled, we cannot provide recording content.
+    </div>
+    <h3>Microphone Permission</h3>
+    <p>The microphone permission is used only when you explicitly start a recording with the app open on your screen. Safe does not use the microphone in the background. If you deny microphone permission, all other features continue to work normally.</p>
+    <h3>Your Responsibility</h3>
+    <p>Recording laws vary by jurisdiction. You are solely responsible for ensuring your use of recording features complies with local law. In many countries you may record conversations you are a party to for your personal safety. We encourage you to check your local laws before recording.</p>
+    <h3>Recording Limits</h3>
+    <ul>
+      <li><strong>Free users:</strong> Up to 10 recordings stored locally on device only. No cloud upload.</li>
+      <li><strong>Pro users:</strong> Unlimited recordings, backed up to encrypted cloud storage (5 GB). Shareable by you only.</li>
+    </ul>
+  </div>
+
+  <div class="section" id="p5">
+    <div class="section-num">Section 05</div>
+    <h2>Data Sharing</h2>
+    <p>We do not sell, rent, or trade your personal data. We share data only in these limited circumstances:</p>
+    <h3>With your trusted contacts (your choice)</h3>
+    <p>When you trigger an SOS, your location is shared with your chosen trusted contacts via SMS. This is the core function of the App and you control who your trusted contacts are.</p>
+    <h3>With service providers</h3>
+    <p>We use a small number of carefully selected service providers who are bound by strict data processing agreements:</p>
+    <ul>
+      <li><strong>Google Firebase</strong> — account authentication, database, cloud storage, push notifications. Governed by Google's data processing terms.</li>
+      <li><strong>RevenueCat</strong> — subscription management. Receives your user ID and subscription status only.</li>
+      <li><strong>Google Maps Platform</strong> — map display and nearby places lookup. No personal data shared beyond necessary API calls.</li>
+    </ul>
+    <h3>Legal requirements</h3>
+    <p>We may disclose information if required by law, court order, or government authority. Given our zero-knowledge architecture, we can provide: account existence confirmation, phone number used for registration, timestamps of SOS events (metadata only — no content). We cannot provide recordings or encrypted data regardless of the request.</p>
+    <p>We will notify you of any such request where legally permitted to do so.</p>
+    <h3>Business transfers</h3>
+    <p>If Safe is acquired or merged with another entity, your data would be transferred as part of that transaction. You will be notified and given the option to delete your account before any transfer occurs.</p>
+  </div>
+
+  <div class="section" id="p6">
+    <div class="section-num">Section 06</div>
+    <h2>Data Retention</h2>
+    <table class="data-table">
+      <thead>
+        <tr><th>Data Type</th><th>Retention Period</th><th>Deletion Method</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Account data (phone, profile)</td><td>Until account deletion</td><td>Instant on account deletion</td></tr>
+        <tr><td>Location data</td><td>Not stored long-term — used in real-time only</td><td>Cleared after SOS event closes</td></tr>
+        <tr><td>SOS event history</td><td>Until you delete it, or account deletion</td><td>Instant on account deletion</td></tr>
+        <tr><td>Cloud recordings (Pro)</td><td>Until you delete them, or account deletion</td><td>Instant on account deletion</td></tr>
+        <tr><td>Local recordings (Free)</td><td>Until you delete them, or app uninstall</td><td>Removed with app data</td></tr>
+        <tr><td>Crash/error logs</td><td>90 days, anonymised</td><td>Auto-purged</td></tr>
+        <tr><td>Anonymous deletion reason</td><td>90 days for analytics, then purged</td><td>Auto-purged, no UID attached</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight">
+      <strong>Account deletion is complete and immediate.</strong> When you delete your account, every piece of data associated with your account is permanently erased from our servers instantly. No grace period. No backup copies retained by us. This cannot be undone.
+    </div>
+  </div>
+
+  <div class="section" id="p7">
+    <div class="section-num">Section 07</div>
+    <h2>Your Rights</h2>
+    <p>Depending on your location, you have the following rights regarding your personal data. All requests can be made to <strong>meehumsak.support@gmail.com</strong> and we will respond within 30 days (or sooner as required by law).</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-title">Right to Access</div>
+        <div class="right-desc">Request a copy of all personal data we hold about you.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-title">Right to Correction</div>
+        <div class="right-desc">Request correction of inaccurate data we hold.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-title">Right to Deletion</div>
+        <div class="right-desc">Delete your account and all data instantly via the app, or contact us.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-title">Right to Portability</div>
+        <div class="right-desc">Request your data in a portable format (where technically feasible).</div>
+      </div>
+      <div class="right-card">
+        <div class="right-title">Right to Object</div>
+        <div class="right-desc">Object to processing of your data for specific purposes.</div>
+      </div>
+      <div class="right-card">
+        <div class="right-title">Right to Withdraw Consent</div>
+        <div class="right-desc">Withdraw consent for recording features at any time by disabling Guardian Mode.</div>
+      </div>
+    </div>
+    <p style="margin-top:14px">If you are in the European Union, you also have the right to lodge a complaint with your local Data Protection Authority. If you are in India, you may contact the Data Protection Board of India once established under the DPDP Act 2023.</p>
+  </div>
+
+  <div class="section" id="p8">
+    <div class="section-num">Section 08</div>
+    <h2>Children's Privacy</h2>
+    <p>Safe is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. Users between 13 and 18 should use the App with parental guidance and consent.</p>
+    <p>If you believe a child under 13 has provided us with personal data, please contact us at <strong>meehumsak.support@gmail.com</strong> and we will delete the data immediately.</p>
+  </div>
+
+  <div class="section" id="p9">
+    <div class="section-num">Section 09</div>
+    <h2>International Users and Data Transfers</h2>
+    <p>Safe is available globally. Your data may be stored and processed in data centres operated by Google Firebase (US, EU, and Asia regions). Google Firebase complies with GDPR Standard Contractual Clauses for data transfers from the EU.</p>
+    <p>For users in the European Union and European Economic Area: we rely on your consent and our legitimate interests (personal safety) as lawful bases for processing. For data transfers outside the EEA, we rely on Standard Contractual Clauses.</p>
+    <p>For users in India: we comply with the Digital Personal Data Protection Act 2023. Your data is processed only for the purposes stated in this policy with your consent.</p>
+    <p>For users in California (CCPA): you have the right to know, delete, and opt-out of sale of personal information. We do not sell personal information. Contact us at <strong>meehumsak.support@gmail.com</strong> to exercise your rights.</p>
+  </div>
+
+  <div class="section" id="p10">
+    <div class="section-num">Section 10</div>
+    <h2>Security Measures</h2>
+    <p>We take security seriously. Measures in place include:</p>
+    <ul>
+      <li><strong>Zero-knowledge encryption</strong> for all recordings — encrypted on device, we hold no keys</li>
+      <li><strong>Firebase Security Rules</strong> — strict rules ensure users can only read and write their own data; no developer admin access to individual user content</li>
+      <li><strong>HTTPS / TLS encryption</strong> for all data in transit</li>
+      <li><strong>Biometric / PIN protection</strong> — app requires authentication to access sensitive screens</li>
+      <li><strong>Trusted contact verification</strong> — contacts must opt in via confirmation SMS before receiving any alerts</li>
+      <li><strong>No plain-text storage</strong> of sensitive data on our servers</li>
+    </ul>
+    <p>Despite these measures, no system is 100% secure. In the event of a data breach that affects your personal data, we will notify you within 72 hours (as required by GDPR and applicable laws) via the contact information associated with your account.</p>
+  </div>
+
+  <div class="section" id="p11">
+    <div class="section-num">Section 11</div>
+    <h2>Third-Party Services</h2>
+    <p>Safe uses the following third-party services. Each has its own privacy policy:</p>
+    <ul>
+      <li><strong>Google Firebase</strong> — <a href="https://firebase.google.com/support/privacy" style="color:var(--teal)">firebase.google.com/support/privacy</a></li>
+      <li><strong>RevenueCat</strong> — <a href="https://www.revenuecat.com/privacy" style="color:var(--teal)">revenuecat.com/privacy</a></li>
+      <li><strong>Google Maps Platform</strong> — <a href="https://policies.google.com/privacy" style="color:var(--teal)">policies.google.com/privacy</a></li>
+      <li><strong>Apple App Store / Google Play</strong> — Payments handled entirely by Apple/Google under their privacy policies</li>
+    </ul>
+    <p>We are not responsible for the privacy practices of these third parties. We select partners who maintain high privacy standards and have appropriate data processing agreements in place.</p>
+  </div>
+
+  <div class="section" id="p12">
+    <div class="section-num">Section 12</div>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy as the App evolves or as laws change. When we make material changes we will:</p>
+    <ul>
+      <li>Send a push notification to all users</li>
+      <li>Display a prominent notice in the App</li>
+      <li>Update the "Last Updated" date at the top of this document</li>
+      <li>For significant changes, request fresh consent where required by law</li>
+    </ul>
+    <p>Continued use of Safe after the effective date of any updated policy constitutes your acceptance of the changes.</p>
+  </div>
+
+  <div class="section" id="p13">
+    <div class="section-num">Section 13</div>
+    <h2>Contact Us and Data Requests</h2>
+    <p>For any privacy-related question, data access request, or concern, contact our privacy team:</p>
+    <div class="highlight">
+      <strong>Privacy Officer — Meehum SAK</strong><br>
+      Email: <strong>meehumsak.support@gmail.com</strong><br>
+      Response time: Within 30 days (GDPR), within 72 hours for breach notifications<br><br>
+      General Support: <strong>meehumsak.support@gmail.com</strong><br>
+      Legal enquiries: <strong>meehumsak.support@gmail.com</strong>
+    </div>
+    <p>When contacting us with a data request, please provide your registered phone number so we can verify your identity before actioning the request.</p>
+  </div>
+
+  <div class="contact-block">
+    <h3>Your privacy matters to us.</h3>
+    <p>We built Safe to protect women — and that starts with protecting your data.</p>
+    <a href="mailto:meehumsak.support@gmail.com" class="contact-link">Privacy Requests</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Meehum SAK. All rights reserved. &nbsp;·&nbsp; Safe App &nbsp;·&nbsp; "Your safety, always."</p>
+  <p style="margin-top:6px">Privacy Policy v1.0 &nbsp;·&nbsp; Effective 19 July 2026 &nbsp;·&nbsp; GDPR · DPDP 2023 · CCPA Compliant</p>
+</footer>
+
+</body>
+</html>

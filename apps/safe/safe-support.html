@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Safe App</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --ink: #1A1A1A;
+    --ink-soft: #444;
+    --ink-muted: #777;
+    --border: #E8E4E0;
+    --bg: #FDFBF9;
+    --surface: #FFFFFF;
+    --section-bg: #F9F6F3;
+    --red: #D93025;
+    --green: #0F6E56;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); font-size: 15px; line-height: 1.75; }
+
+  .header {
+    background: linear-gradient(135deg, #0C447C 0%, #185FA5 100%);
+    color: white;
+    padding: 48px 0 40px;
+    text-align: center;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  .header-sub { font-size: 14px; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .header-meta { display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+  .meta-item { font-size: 12px; color: rgba(255,255,255,0.45); }
+  .meta-item strong { display: block; color: rgba(255,255,255,0.8); font-size: 13px; margin-bottom: 1px; }
+
+  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+  /* Contact cards */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 36px 0 32px;
+  }
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align: center;
+    transition: border-color .15s;
+  }
+  .contact-card:hover { border-color: var(--blue); }
+  .contact-card a { text-decoration: none; }
+  .cc-icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 12px;
+  }
+  .cc-title { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .cc-desc { font-size: 12px; color: var(--ink-muted); margin-bottom: 8px; line-height: 1.4; }
+  .cc-link { font-size: 12px; color: var(--blue); font-weight: 500; }
+  .cc-response { font-size: 11px; color: var(--ink-muted); display: block; margin-top: 4px; }
+
+  /* Section styles */
+  .section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 30px 34px; margin-bottom: 14px; }
+  .section-num { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .section h2 { font-family: 'DM Serif Display', serif; font-size: 21px; font-weight: 400; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .section h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); margin: 18px 0 8px; }
+  .section p { color: var(--ink-soft); font-size: 14px; margin-bottom: 10px; }
+  .section ul { padding-left: 20px; color: var(--ink-soft); font-size: 14px; margin-bottom: 10px; }
+  .section li { margin-bottom: 6px; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); padding: 16px 0; }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-q { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; cursor: pointer; }
+  .faq-a { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* Status steps */
+  .step-row { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-body { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .step-body strong { color: var(--ink); }
+
+  /* Highlight box */
+  .highlight { background: var(--section-bg); border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-size: 14px; color: var(--ink-soft); border: 1px solid var(--border); }
+  .highlight strong { color: var(--ink); }
+
+  /* Warning */
+  .warn { background: #FEF9EC; border-left: 3px solid #EF9F27; border-radius: 0 8px 8px 0; padding: 14px 18px; margin: 12px 0; font-size: 14px; color: #3D2800; line-height: 1.6; }
+  .danger-notice { background: #FEF2F1; border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 20px 0 28px; font-size: 14px; color: #5C1010; }
+  .danger-notice strong { color: var(--red); }
+
+  /* Feature table */
+  .feat-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+  .feat-table th { background: var(--section-bg); text-align: left; padding: 8px 12px; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-muted); border-bottom: 1px solid var(--border); }
+  .feat-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); color: var(--ink-soft); font-size: 13px; }
+  .feat-table tr:last-child td { border-bottom: none; }
+  .yes { color: var(--green); font-weight: 600; }
+  .no { color: var(--ink-muted); }
+  .limited { color: #BA7517; font-weight: 500; }
+
+  /* Bottom CTA */
+  .cta { background: var(--ink); color: white; border-radius: 12px; padding: 32px 36px; margin: 32px 0 48px; text-align: center; }
+  .cta h3 { font-family: 'DM Serif Display', serif; font-size: 22px; font-weight: 400; margin-bottom: 8px; }
+  .cta p { font-size: 14px; color: rgba(255,255,255,0.55); margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: var(--blue); color: white; text-decoration: none; padding: 10px 28px; border-radius: 6px; font-size: 14px; font-weight: 500; margin: 4px; }
+
+  footer { text-align: center; padding: 24px; font-size: 12px; color: var(--ink-muted); border-top: 1px solid var(--border); margin-top: 40px; }
+  footer a { color: var(--blue); text-decoration: none; }
+
+  @media(max-width:600px){ .section{ padding: 20px 16px; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="header-badge">Help Center</div>
+    <h1>Safe Support</h1>
+    <p class="header-sub">Your safety, always. &nbsp;·&nbsp; We're here to help.</p>
+    <div class="header-meta">
+      <div class="meta-item"><strong>App Version</strong>1.0</div>
+      <div class="meta-item"><strong>Support Hours</strong>Email support, response within 48 hours</div>
+      <div class="meta-item"><strong>Response Time</strong>Within 48 hours</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="danger-notice">
+    <strong>In an emergency, do not contact app support.</strong> Call your local emergency number immediately — 112 (India), 911 (USA), 999 (UK), 000 (Australia). Safe support cannot dispatch emergency services.
+  </div>
+
+  <!-- Contact options -->
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="cc-icon" style="background:#E6F1FB"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="11" rx="2" stroke="#185FA5" stroke-width="1.3" fill="none"/><path d="M2 7l7 5 7-5" stroke="#185FA5" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="cc-title">Email Support</div>
+      <div class="cc-desc">For account issues, bugs, and general help</div>
+      <div class="cc-link">meehumsak.support@gmail.com</div>
+      <span class="cc-response">Response within 48 hours</span>
+    </div>
+    <div class="contact-card">
+      <div class="cc-icon" style="background:#FCEBEB"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L3 5v5c0 3.5 2.5 6 6 7 3.5-1 6-3.5 6-7V5L9 2z" stroke="#D93025" stroke-width="1.3" fill="none"/></svg></div>
+      <div class="cc-title">Safety Concern</div>
+      <div class="cc-desc">Report abuse, false SOS, or safety issues</div>
+      <div class="cc-link">meehumsak.support@gmail.com</div>
+      <span class="cc-response">Response within 24 hours</span>
+    </div>
+    <div class="contact-card">
+      <div class="cc-icon" style="background:#EEEDFE"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="2" width="12" height="14" rx="2" stroke="#534AB7" stroke-width="1.3" fill="none"/><line x1="6" y1="7" x2="12" y2="7" stroke="#534AB7" stroke-width="1.1" stroke-linecap="round"/><line x1="6" y1="10" x2="12" y2="10" stroke="#534AB7" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+      <div class="cc-title">Privacy Requests</div>
+      <div class="cc-desc">Data access, deletion, or GDPR requests</div>
+      <div class="cc-link">meehumsak.support@gmail.com</div>
+      <span class="cc-response">Response within 30 days</span>
+    </div>
+    <div class="contact-card">
+      <div class="cc-icon" style="background:#EAF3DE"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6" stroke="#0F6E56" stroke-width="1.3" fill="none"/><path d="M9 6v3.5l2.5 1.5" stroke="#0F6E56" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="cc-title">Business / B2B</div>
+      <div class="cc-desc">Institutional plans, partnerships, licensing</div>
+      <div class="cc-link">meehumsak.support@gmail.com</div>
+      <span class="cc-response">Response within 5 business days</span>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-num">Help</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How does the SOS button work?</div>
+      <div class="faq-a">When you press the SOS button, Safe starts a 3-second countdown (which you can cancel). After the countdown, it sends an SMS message containing your name, a distress message, and a Google Maps link to your current GPS location to all your trusted contacts simultaneously. An internet connection is not required for SMS alerts — they work on mobile network only.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is Guardian Mode?</div>
+      <div class="faq-a">Guardian Mode is Safe's background protection feature. When active, it continuously monitors your GPS location and detects violent phone shaking (shake-to-SOS trigger). Your location is updated every 30 seconds and shared with trusted contacts if you activate sharing. Free users get 30 minutes of Guardian Mode per day. Pro users get unlimited time. You must explicitly start and stop Guardian Mode — it does not activate automatically. A persistent notification is always shown while Guardian Mode is running.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does Safe work without internet?</div>
+      <div class="faq-a">Core safety features work without internet: SOS via SMS, emergency dial, fake call, shake trigger, and locally stored safety tips. Features that require internet: live location share link, cloud recording backup (Pro), danger zone map (Pro), and AI safe route (Pro). We strongly recommend enabling SMS permissions to ensure SOS works in all conditions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I use Safe on multiple devices?</div>
+      <div class="faq-a">Yes. Your Safe account is tied to your phone number. Log in on any device using OTP verification and your Pro subscription and contacts will be restored automatically within a few seconds. Guest users cannot sync across devices.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">I accidentally triggered SOS — what do I do?</div>
+      <div class="faq-a">Safe gives you a 3-second countdown before sending any SOS alert. Tap anywhere on the screen during the countdown to cancel. If an alert was already sent, contact your trusted contacts immediately to let them know it was accidental. There is no way for us to recall an SMS that has already been delivered.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I add or change trusted contacts?</div>
+      <div class="faq-a">Go to the Contacts tab in the app. Tap "Add Contact" and select from your phone book or enter a number manually. The contact will receive a confirmation SMS and must reply to confirm they consent to receiving SOS alerts from you. Free users can add up to 5 contacts. Pro users can add up to 10. Contacts can be removed at any time from the same screen (biometric verification required).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can people listen to my recordings?</div>
+      <div class="faq-a">No. Safe only records when you explicitly tap the Record button with the app open on your screen — never in the background. A recording indicator is always visible while recording. Recordings are encrypted on your device and only accessible by you after biometric or PIN verification. The Safe developer has zero access to your recordings — this is a technical limitation, not just a policy. Sharing recordings is available to Pro users only, and only you can initiate a share.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I cancel my Safe Pro subscription?</div>
+      <div class="faq-a">Subscriptions are managed by Apple App Store or Google Play, not directly by Safe. To cancel: on iPhone, go to Settings → Your Name → Subscriptions → Safe → Cancel. On Android, go to Google Play → Menu → Subscriptions → Safe → Cancel. You will retain Pro access until the end of your current billing period. Deleting your Safe account does NOT cancel billing — you must cancel through your device settings.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What happens when I delete my account?</div>
+      <div class="faq-a">All data is permanently and immediately deleted: your Firebase account, all Firestore data, all cloud recordings (Pro), your RevenueCat subscription record, and all local app data. This cannot be undone. Remember to cancel your App Store or Google Play subscription separately before deleting your account, otherwise billing will continue.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does Safe need microphone permission?</div>
+      <div class="faq-a">The microphone is used only when you explicitly tap the Record button with the Safe app open on your screen. Safe never listens to or records audio in the background. If you tap Record, a clear recording indicator appears on screen at all times. You can use every other feature in Safe — SOS, Guardian Mode, emergency dial, fake call, journey timer — without granting microphone permission at all.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Why does Safe need location permission?</div>
+      <div class="faq-a">Location is used to include your GPS coordinates in SOS alerts, for live location sharing with trusted contacts, and to show nearby police stations and hospitals on the map. Location is never shared without your explicit action or active Guardian Mode. We recommend granting "Always Allow" for Guardian Mode to work correctly in background — this is clearly explained during onboarding.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is Safe available in my country?</div>
+      <div class="faq-a">Safe is available globally on both the Apple App Store and Google Play. Emergency numbers are automatically detected based on your device's locale and region settings. Core features work worldwide. Some features such as the nearby help finder rely on Google Maps data which may have varying accuracy in different regions.</div>
+    </div>
+  </div>
+
+  <!-- Features comparison -->
+  <div class="section">
+    <div class="section-num">Plans</div>
+    <h2>Free vs Pro Features</h2>
+    <table class="feat-table">
+      <thead>
+        <tr><th>Feature</th><th>Free (Basic)</th><th>Safe Pro</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SOS button + SMS location</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Shake to SOS</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Voice trigger ("Help")</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Emergency dial (auto by country)</td><td class="yes">Always free</td><td class="yes">Always free</td></tr>
+        <tr><td>Fake call</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Trusted contacts</td><td class="limited">Up to 5</td><td class="yes">Up to 10</td></tr>
+        <tr><td>Guardian Mode</td><td class="limited">30 min/day</td><td class="yes">Unlimited</td></tr>
+        <tr><td>Audio recordings</td><td class="limited">10 local only</td><td class="yes">Unlimited + cloud</td></tr>
+        <tr><td>Share recordings</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Cloud evidence backup</td><td class="no">No</td><td class="yes">5 GB</td></tr>
+        <tr><td>Live location share link</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Journey timer</td><td class="no">No</td><td class="yes">Unlimited</td></tr>
+        <tr><td>Danger zone community map</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>AI safe route suggestion</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Disguise mode</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>Power button SOS (5× press)</td><td class="no">No</td><td class="yes">Yes</td></tr>
+        <tr><td>SOS history log</td><td class="no">No</td><td class="yes">Full access</td></tr>
+        <tr><td>Safety tips library (offline)</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td>Nearby police + hospitals</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+        <tr><td><strong>Price</strong></td><td class="yes"><strong>Free forever</strong></td><td><strong>$2.99/mo · $19.99/yr</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Troubleshooting -->
+  <div class="section">
+    <div class="section-num">Troubleshooting</div>
+    <h2>Common Issues &amp; Fixes</h2>
+
+    <h3>SOS alert not sending</h3>
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Check SMS permissions.</strong> Go to your phone Settings → Apps → Safe → Permissions → SMS → Allow.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Check trusted contacts are verified.</strong> Contacts must have confirmed via SMS before they receive alerts. Check the Contacts screen for "Pending" status.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>Check mobile signal.</strong> SMS requires at least 1 bar of signal. SOS cannot send via SMS with zero signal.</div></div>
+    <div class="step-row"><div class="step-num">4</div><div class="step-body"><strong>Check Do Not Disturb.</strong> DND mode on some devices can block outgoing SMS. Disable DND when using Safe.</div></div>
+
+    <h3>Guardian Mode stops in background</h3>
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Android — disable battery optimisation.</strong> Settings → Battery → Battery Optimisation → Safe → Don't Optimise. This is the most common cause.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Android — allow background activity.</strong> Settings → Apps → Safe → Battery → Unrestricted.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>iOS — enable Background App Refresh.</strong> Settings → General → Background App Refresh → Safe → On.</div></div>
+    <div class="step-row"><div class="step-num">4</div><div class="step-body"><strong>Keep screen on or use the Guardian Mode notification.</strong> Tapping the persistent notification keeps the service alive on Android.</div></div>
+
+    <h3>Voice trigger not detecting</h3>
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Check microphone permission.</strong> Settings → Apps → Safe → Permissions → Microphone → Allow.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Speak clearly and at normal volume.</strong> Voice detection works best within 1–2 metres. Very quiet environments or strong accents may reduce accuracy.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>Adjust sensitivity in Settings.</strong> If there are too many false triggers, increase the sensitivity threshold in Settings → Safety → Voice sensitivity.</div></div>
+
+    <h3>Biometric / PIN not working</h3>
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Use your device's registered biometric.</strong> Safe uses your phone's built-in Face ID or fingerprint — the same one used to unlock your phone.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Use your Safe PIN as backup.</strong> If biometric fails 3 times, Safe will offer your PIN. If you forgot your PIN, contact support.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>Re-enrol biometric.</strong> If you recently updated your fingerprint or Face ID on your device, go to Settings → App Lock → Re-enable and set up again.</div></div>
+  </div>
+
+  <!-- Account and data -->
+  <div class="section">
+    <div class="section-num">Account</div>
+    <h2>Account &amp; Data Management</h2>
+    <h3>How to delete your account</h3>
+    <p>Go to Settings → Account Actions → Delete Account. You will be asked to re-authenticate, optionally provide a reason, and confirm by typing "DELETE." All your data is permanently erased immediately. Remember to cancel your subscription separately in App Store or Google Play settings.</p>
+    <h3>How to export your data</h3>
+    <p>To request a copy of your personal data, email <strong>meehumsak.support@gmail.com</strong> with your registered phone number. We will prepare and send your data within 30 days.</p>
+    <h3>Forgot your Safe PIN</h3>
+    <p>If you have forgotten your Safe PIN, contact support at <strong>meehumsak.support@gmail.com</strong> with your registered phone number. We will verify your identity via OTP and assist you in resetting your PIN. We cannot bypass biometric verification on your behalf.</p>
+    <h3>Subscription and billing issues</h3>
+    <p>For refund requests or billing disputes, contact Apple Support (for iPhone users) or Google Play Support (for Android users) directly — billing is managed entirely by them. For questions about your Pro plan status within the app, contact <strong>meehumsak.support@gmail.com</strong>.</p>
+  </div>
+
+  <!-- Consent and legal -->
+  <div class="section">
+    <div class="section-num">Legal</div>
+    <h2>Consent, Safety, and Your Rights</h2>
+    <h3>Recording consent</h3>
+    <p>When you first activate Guardian Mode, Safe displays a consent screen explaining that audio recording will occur. You must acknowledge this screen to proceed. Recording only happens when you have explicitly started Guardian Mode. You are responsible for complying with recording consent laws in your country.</p>
+    <h3>Reporting misuse or abuse</h3>
+    <p>If you believe someone is misusing Safe to harass you — for example, by adding you as a trusted contact without your knowledge — please contact us at <strong>meehumsak.support@gmail.com</strong>. Include the phone number that added you and a description of the issue. We take abuse reports very seriously and will act promptly.</p>
+    <h3>Law enforcement requests</h3>
+    <p>Due to Safe's zero-knowledge encryption architecture, we cannot provide recording content to any party. We can confirm account existence and provide metadata (timestamps, not content) only in response to a valid court order. For legal correspondence: <strong>meehumsak.support@gmail.com</strong>.</p>
+    <div class="highlight">
+      <strong>Your rights under GDPR, India DPDP Act, and CCPA:</strong> You have the right to access, correct, delete, and port your data. Contact <strong>meehumsak.support@gmail.com</strong> for any data rights request. We respond within 30 days.
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Still need help?</h3>
+    <p>Our support team responds within 48 hours. We're a small team and we care about every user.</p>
+    <a href="mailto:meehumsak.support@gmail.com" class="cta-btn">Email Support</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Meehum SAK &nbsp;·&nbsp; Safe App &nbsp;·&nbsp; "Your safety, always."</p>
+  <p style="margin-top:6px">
+    <a href="safe-terms-of-service.html">Terms of Service</a> &nbsp;·&nbsp;
+    <a href="safe-privacy-policy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="mailto:meehumsak.support@gmail.com">Contact Support</a>
+  </p>
+</footer>
+
+</body>
+</html>
