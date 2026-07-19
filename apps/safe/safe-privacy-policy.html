@@ -383,7 +383,7 @@
       <a href="#p1">1. Who We Are</a>
       <a href="#p2">2. What Data We Collect</a>
       <a href="#p3">3. How We Use Your Data</a>
-      <a href="#p4">4. Recordings &amp; Zero-Knowledge</a>
+      <a href="#p4">4. Recordings — Never Uploaded</a>
       <a href="#p5">5. Data Sharing</a>
       <a href="#p6">6. Data Retention</a>
       <a href="#p7">7. Your Rights</a>
@@ -424,10 +424,10 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Phone number</strong></td>
-          <td>Your mobile number used for OTP verification</td>
-          <td>Account creation and identity verification</td>
-          <td>You only. We store hashed version.</td>
+          <td><strong>Account info</strong></td>
+          <td>Email address, display name, and profile photo, via Google Sign-In (Safe's only sign-in method)</td>
+          <td>Account creation, authentication, and displaying your name/photo to linked family members</td>
+          <td>You, and — for name/photo only — family members you're linked with</td>
         </tr>
         <tr>
           <td><strong>Location (GPS)</strong></td>
@@ -439,13 +439,13 @@
           <td><strong>Audio recordings</strong></td>
           <td>Audio captured when you explicitly tap Record with app open on screen. Never background.</td>
           <td>Evidence preservation — foreground only, user-initiated</td>
-          <td>You only — encrypted, zero-knowledge</td>
+          <td>You only — never leaves your device</td>
         </tr>
         <tr>
           <td><strong>Trusted contacts</strong></td>
           <td>Names and phone numbers you add</td>
           <td>Sending SOS alerts</td>
-          <td>You only — stored encrypted</td>
+          <td>You only, protected by server-side access-control rules</td>
         </tr>
         <tr>
           <td><strong>SOS event metadata</strong></td>
@@ -458,12 +458,6 @@
           <td>Free/Pro, expiry date (via RevenueCat)</td>
           <td>Determining feature access</td>
           <td>You and our subscription service only</td>
-        </tr>
-        <tr>
-          <td><strong>App usage data</strong></td>
-          <td>Crash reports, error logs (no personal content)</td>
-          <td>App stability and bug fixing</td>
-          <td>Developer only — anonymised</td>
         </tr>
         <tr>
           <td><strong>Deletion reason</strong></td>
@@ -501,10 +495,10 @@
 
   <div class="section" id="p4">
     <div class="section-num">Section 04</div>
-    <h2>Recordings — Foreground Only, Zero-Knowledge</h2>
+    <h2>Recordings — Foreground Only, Never Uploaded</h2>
     <div class="zero-knowledge">
       <strong>Safe never records audio in the background.</strong> Recording only happens when the app is open and visible on your screen and you explicitly tap the Record button. There is always a visible recording indicator on screen. We cannot access your recordings — this is not a policy, it is a technical fact.<br><br>
-      All recordings are encrypted on your device before any cloud upload. We store only the encrypted file and do not hold the decryption key. Even if legally compelled, we cannot provide recording content.
+      All recordings, on every tier, are stored only on your device. They are never uploaded to Firebase Storage, any server, or any cloud service — this is permanent architecture, not a temporary decision. Because we have no copy at all, we have nothing to provide even if legally compelled.
     </div>
     <h3>Microphone Permission</h3>
     <p>The microphone permission is used only when you explicitly start a recording with the app open on your screen. Safe does not use the microphone in the background. If you deny microphone permission, all other features continue to work normally.</p>
@@ -512,8 +506,8 @@
     <p>Recording laws vary by jurisdiction. You are solely responsible for ensuring your use of recording features complies with local law. In many countries you may record conversations you are a party to for your personal safety. We encourage you to check your local laws before recording.</p>
     <h3>Recording Limits</h3>
     <ul>
-      <li><strong>Free users:</strong> Up to 10 recordings stored locally on device only. No cloud upload.</li>
-      <li><strong>Pro users:</strong> Unlimited recordings, backed up to encrypted cloud storage (5 GB). Shareable by you only.</li>
+      <li><strong>Free users:</strong> Up to 8 recordings stored locally on your device (~500 MB total). No cloud upload.</li>
+      <li><strong>Pro users:</strong> Up to 30 recordings stored locally on your device (~2 GB total). Still device-local only — no cloud upload. Pro users can export/share individual recordings (e.g. to WhatsApp, email) — you control if and where a recording ever leaves your device.</li>
     </ul>
   </div>
 
@@ -531,7 +525,7 @@
       <li><strong>Google Maps Platform</strong> — map display and nearby places lookup. No personal data shared beyond necessary API calls.</li>
     </ul>
     <h3>Legal requirements</h3>
-    <p>We may disclose information if required by law, court order, or government authority. Given our zero-knowledge architecture, we can provide: account existence confirmation, phone number used for registration, timestamps of SOS events (metadata only — no content). We cannot provide recordings or encrypted data regardless of the request.</p>
+    <p>We may disclose information if required by law, court order, or government authority. We can provide: account existence confirmation (linked to your Google account email), and timestamps of SOS events (metadata only — no content). We cannot provide recording content under any circumstance, because recordings are never stored anywhere but your own device — we simply have no copy to provide.</p>
     <p>We will notify you of any such request where legally permitted to do so.</p>
     <h3>Business transfers</h3>
     <p>If Safe is acquired or merged with another entity, your data would be transferred as part of that transaction. You will be notified and given the option to delete your account before any transfer occurs.</p>
@@ -545,12 +539,10 @@
         <tr><th>Data Type</th><th>Retention Period</th><th>Deletion Method</th></tr>
       </thead>
       <tbody>
-        <tr><td>Account data (phone, profile)</td><td>Until account deletion</td><td>Instant on account deletion</td></tr>
-        <tr><td>Location data</td><td>Not stored long-term — used in real-time only</td><td>Cleared after SOS event closes</td></tr>
+        <tr><td>Account data (email, name, photo)</td><td>Until account deletion</td><td>Instant on account deletion</td></tr>
+        <tr><td>Location data</td><td>Your last known location persists (marked inactive when you stop sharing, not deleted) until account deletion or your next sharing session overwrites it</td><td>Instant on account deletion</td></tr>
         <tr><td>SOS event history</td><td>Until you delete it, or account deletion</td><td>Instant on account deletion</td></tr>
-        <tr><td>Cloud recordings (Pro)</td><td>Until you delete them, or account deletion</td><td>Instant on account deletion</td></tr>
-        <tr><td>Local recordings (Free)</td><td>Until you delete them, or app uninstall</td><td>Removed with app data</td></tr>
-        <tr><td>Crash/error logs</td><td>90 days, anonymised</td><td>Auto-purged</td></tr>
+        <tr><td>Recordings (all tiers, device-local only)</td><td>Until you delete them or uninstall the app — never stored anywhere else</td><td>Removed with app data</td></tr>
         <tr><td>Anonymous deletion reason</td><td>90 days for analytics, then purged</td><td>Auto-purged, no UID attached</td></tr>
       </tbody>
     </table>
@@ -613,12 +605,12 @@
     <h2>Security Measures</h2>
     <p>We take security seriously. Measures in place include:</p>
     <ul>
-      <li><strong>Zero-knowledge encryption</strong> for all recordings — encrypted on device, we hold no keys</li>
-      <li><strong>Firebase Security Rules</strong> — strict rules ensure users can only read and write their own data; no developer admin access to individual user content</li>
+      <li><strong>Recordings never leave your device</strong> — the strongest possible protection, since there is no copy on any server for anyone to access, including us</li>
+      <li><strong>Firebase Security Rules</strong> — strict rules ensure the app's client-side code can only read and write your own data, never another user's</li>
       <li><strong>HTTPS / TLS encryption</strong> for all data in transit</li>
       <li><strong>Biometric / PIN protection</strong> — app requires authentication to access sensitive screens</li>
       <li><strong>Trusted contact verification</strong> — contacts must opt in via confirmation SMS before receiving any alerts</li>
-      <li><strong>No plain-text storage</strong> of sensitive data on our servers</li>
+      <li><strong>Encryption at rest</strong> for all server-stored data, provided by Google Cloud's standard infrastructure</li>
     </ul>
     <p>Despite these measures, no system is 100% secure. In the event of a data breach that affects your personal data, we will notify you within 72 hours (as required by GDPR and applicable laws) via the contact information associated with your account.</p>
   </div>
@@ -660,7 +652,7 @@
       General Support: <strong>meehumsak.support@gmail.com</strong><br>
       Legal enquiries: <strong>meehumsak.support@gmail.com</strong>
     </div>
-    <p>When contacting us with a data request, please provide your registered phone number so we can verify your identity before actioning the request.</p>
+    <p>When contacting us with a data request, please write to us from the Google account email associated with your Safe account so we can verify your identity before actioning the request.</p>
   </div>
 
   <div class="contact-block">

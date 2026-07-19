@@ -200,17 +200,17 @@
 
     <div class="faq-item">
       <div class="faq-q">What is Guardian Mode?</div>
-      <div class="faq-a">Guardian Mode is Safe's background protection feature. When active, it continuously monitors your GPS location and detects violent phone shaking (shake-to-SOS trigger). Your location is updated every 30 seconds and shared with trusted contacts if you activate sharing. Free users get 30 minutes of Guardian Mode per day. Pro users get unlimited time. You must explicitly start and stop Guardian Mode — it does not activate automatically. A persistent notification is always shown while Guardian Mode is running.</div>
+      <div class="faq-a">Guardian Mode is Safe's background protection feature. When active, it continuously monitors your GPS location. Your location is updated every 30 seconds and shared with trusted contacts if you activate sharing. Free users get 30 minutes of Guardian Mode per day. Pro users get unlimited time. You must explicitly start and stop Guardian Mode — it does not activate automatically. A persistent notification is always shown while Guardian Mode is running.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">Does Safe work without internet?</div>
-      <div class="faq-a">Core safety features work without internet: SOS via SMS, emergency dial, fake call, shake trigger, and locally stored safety tips. Features that require internet: live location share link, cloud recording backup (Pro), danger zone map (Pro), and AI safe route (Pro). We strongly recommend enabling SMS permissions to ensure SOS works in all conditions.</div>
+      <div class="faq-a">Core safety features work without internet: SOS via SMS, emergency dial, fake call, and locally stored safety tips. Features that require internet: live location share link and nearby police/hospital lookup. We strongly recommend enabling SMS permissions to ensure SOS works in all conditions.</div>
     </div>
 
     <div class="faq-item">
       <div class="faq-q">Can I use Safe on multiple devices?</div>
-      <div class="faq-a">Yes. Your Safe account is tied to your phone number. Log in on any device using OTP verification and your Pro subscription and contacts will be restored automatically within a few seconds. Guest users cannot sync across devices.</div>
+      <div class="faq-a">Yes. Your Safe account is tied to your Google account. Sign in with the same Google account on any device and your Pro subscription and contacts will be restored automatically within a few seconds. Note that audio recordings are device-local only and do not sync — they stay only on the device that recorded them.</div>
     </div>
 
     <div class="faq-item">
@@ -225,7 +225,7 @@
 
     <div class="faq-item">
       <div class="faq-q">Can people listen to my recordings?</div>
-      <div class="faq-a">No. Safe only records when you explicitly tap the Record button with the app open on your screen — never in the background. A recording indicator is always visible while recording. Recordings are encrypted on your device and only accessible by you after biometric or PIN verification. The Safe developer has zero access to your recordings — this is a technical limitation, not just a policy. Sharing recordings is available to Pro users only, and only you can initiate a share.</div>
+      <div class="faq-a">No. Safe only records when you explicitly tap the Record button with the app open on your screen — never in the background. A recording indicator is always visible while recording. Recordings stay only on your device and are never uploaded anywhere, and are only accessible by you after biometric or PIN verification. The Safe developer has zero access to your recordings — this is a technical limitation, not just a policy, since there is no copy on any server. Sharing recordings is available to Pro users only, and only you can initiate a share.</div>
     </div>
 
     <div class="faq-item">
@@ -235,7 +235,7 @@
 
     <div class="faq-item">
       <div class="faq-q">What happens when I delete my account?</div>
-      <div class="faq-a">All data is permanently and immediately deleted: your Firebase account, all Firestore data, all cloud recordings (Pro), your RevenueCat subscription record, and all local app data. This cannot be undone. Remember to cancel your App Store or Google Play subscription separately before deleting your account, otherwise billing will continue.</div>
+      <div class="faq-a">All data is permanently and immediately deleted: your Firebase account, all Firestore data, your RevenueCat subscription record, and all local app data on your device (including audio recordings, which are never stored anywhere but your device). This cannot be undone. Remember to cancel your App Store or Google Play subscription separately before deleting your account, otherwise billing will continue.</div>
     </div>
 
     <div class="faq-item">
@@ -264,25 +264,19 @@
       </thead>
       <tbody>
         <tr><td>SOS button + SMS location</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Shake to SOS</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td>Voice trigger ("Help")</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
         <tr><td>Emergency dial (auto by country)</td><td class="yes">Always free</td><td class="yes">Always free</td></tr>
         <tr><td>Fake call</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
         <tr><td>Trusted contacts</td><td class="limited">Up to 5</td><td class="yes">Up to 10</td></tr>
         <tr><td>Guardian Mode</td><td class="limited">30 min/day</td><td class="yes">Unlimited</td></tr>
-        <tr><td>Audio recordings</td><td class="limited">10 local only</td><td class="yes">Unlimited + cloud</td></tr>
-        <tr><td>Share recordings</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>Cloud evidence backup</td><td class="no">No</td><td class="yes">5 GB</td></tr>
+        <tr><td>Audio recordings (device-local only, never uploaded)</td><td class="limited">Up to 8</td><td class="yes">Up to 30</td></tr>
+        <tr><td>Share/export recordings</td><td class="no">No</td><td class="yes">Yes</td></tr>
         <tr><td>Live location share link</td><td class="no">No</td><td class="yes">Yes</td></tr>
         <tr><td>Journey timer</td><td class="no">No</td><td class="yes">Unlimited</td></tr>
-        <tr><td>Danger zone community map</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>AI safe route suggestion</td><td class="no">No</td><td class="yes">Yes</td></tr>
         <tr><td>Disguise mode</td><td class="no">No</td><td class="yes">Yes</td></tr>
-        <tr><td>Power button SOS (5× press)</td><td class="no">No</td><td class="yes">Yes</td></tr>
         <tr><td>SOS history log</td><td class="no">No</td><td class="yes">Full access</td></tr>
         <tr><td>Safety tips library (offline)</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
         <tr><td>Nearby police + hospitals</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
-        <tr><td><strong>Price</strong></td><td class="yes"><strong>Free forever</strong></td><td><strong>$2.99/mo · $19.99/yr</strong></td></tr>
+        <tr><td><strong>Price</strong></td><td class="yes"><strong>Free forever</strong></td><td><strong>$3.99/mo · $9.99/3mo · $29.99/yr</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -304,11 +298,6 @@
     <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>iOS — enable Background App Refresh.</strong> Settings → General → Background App Refresh → Safe → On.</div></div>
     <div class="step-row"><div class="step-num">4</div><div class="step-body"><strong>Keep screen on or use the Guardian Mode notification.</strong> Tapping the persistent notification keeps the service alive on Android.</div></div>
 
-    <h3>Voice trigger not detecting</h3>
-    <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Check microphone permission.</strong> Settings → Apps → Safe → Permissions → Microphone → Allow.</div></div>
-    <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Speak clearly and at normal volume.</strong> Voice detection works best within 1–2 metres. Very quiet environments or strong accents may reduce accuracy.</div></div>
-    <div class="step-row"><div class="step-num">3</div><div class="step-body"><strong>Adjust sensitivity in Settings.</strong> If there are too many false triggers, increase the sensitivity threshold in Settings → Safety → Voice sensitivity.</div></div>
-
     <h3>Biometric / PIN not working</h3>
     <div class="step-row"><div class="step-num">1</div><div class="step-body"><strong>Use your device's registered biometric.</strong> Safe uses your phone's built-in Face ID or fingerprint — the same one used to unlock your phone.</div></div>
     <div class="step-row"><div class="step-num">2</div><div class="step-body"><strong>Use your Safe PIN as backup.</strong> If biometric fails 3 times, Safe will offer your PIN. If you forgot your PIN, contact support.</div></div>
@@ -322,9 +311,9 @@
     <h3>How to delete your account</h3>
     <p>Go to Settings → Account Actions → Delete Account. You will be asked to re-authenticate, optionally provide a reason, and confirm by typing "DELETE." All your data is permanently erased immediately. Remember to cancel your subscription separately in App Store or Google Play settings.</p>
     <h3>How to export your data</h3>
-    <p>To request a copy of your personal data, email <strong>meehumsak.support@gmail.com</strong> with your registered phone number. We will prepare and send your data within 30 days.</p>
+    <p>To request a copy of your personal data, email <strong>meehumsak.support@gmail.com</strong> from the Google account email associated with your Safe account. We will prepare and send your data within 30 days.</p>
     <h3>Forgot your Safe PIN</h3>
-    <p>If you have forgotten your Safe PIN, contact support at <strong>meehumsak.support@gmail.com</strong> with your registered phone number. We will verify your identity via OTP and assist you in resetting your PIN. We cannot bypass biometric verification on your behalf.</p>
+    <p>If you have forgotten your Safe PIN, contact support at <strong>meehumsak.support@gmail.com</strong> from the Google account email associated with your Safe account. We will verify your identity via that email and assist you in resetting your PIN. We cannot bypass biometric verification on your behalf.</p>
     <h3>Subscription and billing issues</h3>
     <p>For refund requests or billing disputes, contact Apple Support (for iPhone users) or Google Play Support (for Android users) directly — billing is managed entirely by them. For questions about your Pro plan status within the app, contact <strong>meehumsak.support@gmail.com</strong>.</p>
   </div>
@@ -338,7 +327,7 @@
     <h3>Reporting misuse or abuse</h3>
     <p>If you believe someone is misusing Safe to harass you — for example, by adding you as a trusted contact without your knowledge — please contact us at <strong>meehumsak.support@gmail.com</strong>. Include the phone number that added you and a description of the issue. We take abuse reports very seriously and will act promptly.</p>
     <h3>Law enforcement requests</h3>
-    <p>Due to Safe's zero-knowledge encryption architecture, we cannot provide recording content to any party. We can confirm account existence and provide metadata (timestamps, not content) only in response to a valid court order. For legal correspondence: <strong>meehumsak.support@gmail.com</strong>.</p>
+    <p>Because recordings are never stored anywhere but your own device, we have no recording content to provide under any circumstance. We can confirm account existence and provide metadata (timestamps, not content) only in response to a valid court order. For legal correspondence: <strong>meehumsak.support@gmail.com</strong>.</p>
     <div class="highlight">
       <strong>Your rights under GDPR, India DPDP Act, and CCPA:</strong> You have the right to access, correct, delete, and port your data. Contact <strong>meehumsak.support@gmail.com</strong> for any data rights request. We respond within 30 days.
     </div>

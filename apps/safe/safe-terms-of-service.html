@@ -325,8 +325,6 @@
       <li>You must not be prohibited from using the App under applicable law</li>
       <li>You must provide accurate information when creating your account</li>
     </ul>
-    <h3>Guest Mode</h3>
-    <p>You may use limited features of Safe without creating an account ("Guest Mode"). Guest users cannot purchase subscriptions, access cloud backup, or sync data across devices. Guest data is stored locally and will be lost if the app is uninstalled.</p>
   </div>
 
   <div class="section" id="s3">
@@ -335,7 +333,7 @@
     <p>Safe is a personal safety application that provides tools to help users in potentially dangerous situations. Features include:</p>
     <ul>
       <li><strong>SOS Alerts:</strong> Send your location via SMS to pre-selected trusted contacts</li>
-      <li><strong>Guardian Mode:</strong> Background GPS location monitoring and shake-trigger detection</li>
+      <li><strong>Guardian Mode:</strong> Background GPS location monitoring</li>
       <li><strong>Manual Recording:</strong> Record audio when the app is open and visible, with an explicit tap — foreground only, never background</li>
       <li><strong>Fake Call:</strong> Simulate an incoming phone call to exit uncomfortable situations</li>
       <li><strong>Journey Timer:</strong> Set arrival timers with automated alerts to contacts if you don't check in</li>
@@ -352,7 +350,7 @@
     <div class="section-num">Section 04</div>
     <h2>User Accounts</h2>
     <h3>Account Creation</h3>
-    <p>You may create an account using your phone number (via OTP verification) or Google Sign-In. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+    <p>You create an account using Google Sign-In — this is Safe's only sign-in method. You are responsible for maintaining the confidentiality of your Google account and for all activities that occur under your Safe account.</p>
     <h3>Trusted Contacts</h3>
     <p>Before adding a person as a trusted contact, that person must verify and consent to receiving SOS alerts from you via a confirmation SMS. By adding a contact, you confirm you have their permission to send them emergency alerts. You must not add contacts without their knowledge or consent.</p>
     <h3>Account Security</h3>
@@ -393,13 +391,13 @@
     <p>Recording consent laws vary by country and region. In some jurisdictions, one-party consent (only you need to consent) applies. In others, all parties must consent. <strong>You are solely responsible for ensuring your use of Safe's recording features complies with the laws of your country, state, or region.</strong></p>
     <p>We strongly recommend you familiarise yourself with recording consent laws in your jurisdiction before using recording features.</p>
     <h3>Our Access to Recordings</h3>
-    <p>We do not access, listen to, view, or process your recordings. All recordings are encrypted on your device before any cloud upload (Pro users). We operate a zero-knowledge architecture — we do not hold encryption keys and cannot access your recordings under any circumstances, including in response to third-party requests.</p>
+    <p>We do not access, listen to, view, or process your recordings. All recordings, on every tier, are stored only on your device and are never uploaded to any server or cloud service — this is permanent architecture. Because we have no copy at all, we cannot access your recordings under any circumstances, including in response to third-party requests.</p>
     <h3>How Recording Works — Foreground Only</h3>
     <p>Safe only records audio when the app is open and visible on your screen and you have explicitly tapped the record button. Safe does <strong>never</strong> record audio in the background without your active, visible interaction. The app will always display a clear recording indicator on screen whenever recording is active.</p>
     <h3>Recording Storage Limits</h3>
     <ul>
-      <li><strong>Free users:</strong> Up to 10 recordings stored locally on your device. Oldest recordings are automatically deleted when the limit is reached. No cloud upload.</li>
-      <li><strong>Pro users:</strong> Up to 5 GB cloud backup plus unlimited local storage. Cloud recordings are end-to-end encrypted.</li>
+      <li><strong>Free users:</strong> Up to 8 recordings stored locally on your device (~500 MB total). Oldest recordings are automatically deleted when the limit is reached. No cloud upload.</li>
+      <li><strong>Pro users:</strong> Up to 30 recordings stored locally on your device (~2 GB total). Still device-local only — no cloud upload. Pro users can export/share individual recordings.</li>
     </ul>
     <h3>Sharing Recordings</h3>
     <p>The ability to export and share recordings is available to Pro subscribers only. You may share recordings with law enforcement, legal professionals, or others for legitimate safety or legal purposes. You are responsible for how you use and share recordings.</p>
@@ -411,7 +409,7 @@
     <h3>Free Tier</h3>
     <p>Safe offers a free tier ("Safe Basic") with no time limit. Core safety features including SOS alerts, Guardian Mode (30 minutes per day), emergency dial, fake call, and up to 5 trusted contacts are available to all users at no cost, permanently.</p>
     <h3>Safe Pro Subscription</h3>
-    <p>Safe Pro is available for a recurring subscription fee of <strong>$2.99 per month</strong> or <strong>$19.99 per year</strong>. A lifetime purchase option may be available at <strong>$29.99</strong> (limited availability). Prices may vary by region and are displayed in the App at time of purchase.</p>
+    <p>Safe Pro is available as a recurring subscription: <strong>$3.99 per month</strong>, <strong>$9.99 per 3 months</strong>, or <strong>$29.99 per year</strong>. Each plan includes a 7-day free trial. There is no lifetime or one-time-purchase option — Safe Pro is subscription-only. Prices may vary by region and are displayed in the App at time of purchase.</p>
     <h3>Billing</h3>
     <ul>
       <li>Subscriptions are billed through your Apple App Store or Google Play account</li>
@@ -431,13 +429,13 @@
     <p>Our collection and use of your personal data is governed by our <strong>Privacy Policy</strong>, which is incorporated into these Terms by reference. Please read the Privacy Policy carefully.</p>
     <h3>Security Measures</h3>
     <ul>
-      <li>All recordings are encrypted on-device before any upload (zero-knowledge)</li>
-      <li>Firebase Security Rules ensure users can only access their own data</li>
+      <li>All recordings are stored only on your device and are never uploaded anywhere</li>
+      <li>Firebase Security Rules ensure the app's client-side code can only access your own data</li>
       <li>Biometric or PIN verification is required to access sensitive features</li>
       <li>We do not sell, rent, or share your personal data with third parties for marketing</li>
     </ul>
     <h3>Data on Account Deletion</h3>
-    <p>When you delete your account, all associated data is permanently and immediately deleted: Firebase account, all Firestore documents, all cloud recordings, local app data, and RevenueCat subscription records. This cannot be undone.</p>
+    <p>When you delete your account, all associated data is permanently and immediately deleted: Firebase account, all Firestore documents, all local app data on your device (including recordings, which were never stored anywhere else), and RevenueCat subscription records. This cannot be undone.</p>
   </div>
 
   <div class="section" id="s9">
